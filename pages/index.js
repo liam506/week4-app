@@ -1,13 +1,19 @@
 import Link from 'next/link';
 import Layout from '../components/layout';
 import { getSortedList } from '../lib/data';
+import { getSortedThingList } from '../lib/data-things';
 
 // define a getStaticProps() function - this name is defined by next.js
 export async function getStaticProps() {
   const allData = await getSortedList();
+  const allThingData = await getSortedThingList();
   return {
-    props: { allData }
-  };
+    props: {
+      allData,
+      allThingData
+    },
+    revalidate: 60
+  }
 }
 
 // export our home page component Home
