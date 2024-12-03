@@ -25,6 +25,14 @@ export default function Home( { allData } ) {
           )
         }
       </div>
+      <h1>List of Things</h1>
+        <div className="list-group">
+          {allThingData.map(({ id, thing_description }) => (
+            <Link key={id} href={`/things/${id}`}>
+              <a className="list-group-item list-group-item-action">{thing_description}</a>
+            </Link>
+          ))}
+        </div>
     </Layout>
   );
 }
